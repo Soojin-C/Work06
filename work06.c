@@ -1,10 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct Pokemon {char* name; int index;};
 
-int newStruct(){
-  return 0;
+struct Pokemon newStruct(){
+  char* names[3];
+  names[0] = "Bulbasaur";
+  names[1] = "Ivysaur";
+  names[2] = "Venasaur";
+  srand(time(NULL));
+
+  int indeX = rand()%3;
+  printf("\n\nindeX: %d\n\n",indeX);
+  struct Pokemon ret;
+  ret.name = names[indeX];
+  ret.index = indeX+1;
+  return ret;
+  
 }
 
 int modifyStruct(struct Pokemon *pointer, int newInt){
@@ -15,7 +28,8 @@ int modifyStruct(struct Pokemon *pointer, int newInt){
   return 0;
 }
 
-int printStruct(){
+int printStruct(struct Pokemon pkmn){
+  printf("Name: %s\nNumber: %d\n", pkmn.name, pkmn.index);
   return 0; 
 }
 
@@ -23,15 +37,18 @@ int main(){
   char* test = "h";
 
   struct Pokemon first;
-  first.name = test;
-  first.index = 5;
+  //first.name = test;
+  //first.index = 5;
 
+  first = newStruct();
+  
   struct Pokemon *point = &first;
-
+  
   printf("%p\n\n", point);
 
-  modifyStruct(point, 4);
-
+  //modifyStruct(point, 4);
+  
+  printStruct(first);
   return 0;
   
 }
