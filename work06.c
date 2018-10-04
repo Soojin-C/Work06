@@ -21,10 +21,9 @@ struct Pokemon newStruct(){
 }
 
 int modifyStruct(struct Pokemon *pointer, int newInt){
-  printf("%p\n", pointer);
+  //printf("%p\n", pointer);
   pointer -> index = newInt;
-  printf("%d\n", pointer -> index);
-  
+  //printf("%d\n", pointer -> index);
   return 0;
 }
 
@@ -34,20 +33,20 @@ int printStruct(struct Pokemon pkmn){
 }
 
 int main(){
-  char* test = "h";
-
   struct Pokemon first;
-  //first.name = test;
-  //first.index = 5;
 
   first = newStruct();
-  
   struct Pokemon *point = &first;
-  
-  printf("%p\n\n", point);
 
-  //modifyStruct(point, 4);
+  printf("The Original Struct: \n");
+  printStruct(first);
   
+  // testing : printf("%p\n\n", point);
+
+  printf("Modifying the struct to have an index of 4...\n");
+  modifyStruct(point ,4);
+
+  printf("The Modified Struct: \n");
   printStruct(first);
   return 0;
   
